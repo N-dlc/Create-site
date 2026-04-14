@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Site — Votre présence web locale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir: #0e0e0e;
+    --noir-doux: #1a1a1a;
+    --beige: #f5f0e8;
+    --beige-clair: #faf7f2;
+    --beige-moyen: #e8e0d0;
+    --or: #c8a96e;
+    --or-clair: #d4b98a;
+    --texte-clair: #6b6560;
+    --blanc: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--beige-clair);
+    color: var(--noir);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--beige-moyen);
+    padding: 0 6vw;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--noir);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  .nav-logo span { color: var(--or); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--texte-clair);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+
+  .nav-links a:hover { color: var(--or); }
+
+  .nav-cta {
+    background: var(--noir) !important;
+    color: var(--beige) !important;
+    padding: 9px 22px !important;
+    border-radius: 2px;
+    font-size: 12px !important;
+    transition: background 0.25s !important;
+  }
+
+  .nav-cta:hover { background: var(--or) !important; color: var(--blanc) !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--noir); transition: 0.3s; }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  #accueil {
+    min-height: 100vh;
+    background: var(--noir);
+    display: flex;
+    align-items: center;
+    padding: 120px 6vw 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 60px, var(--beige) 60px, var(--beige) 61px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, var(--beige) 60px, var(--beige) 61px);
+  }
+
+  .hero-content { max-width: 720px; position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 32px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--or);
+  }
+
+  .hero-titre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--beige);
+    margin-bottom: 12px;
+  }
+
+  .hero-titre em {
+    font-style: italic;
+    color: var(--or-clair);
+  }
+
+  .hero-slogan {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--beige-moyen);
+    margin-bottom: 48px;
+    max-width: 520px;
+    line-height: 1.6;
+    border-left: 2px solid var(--or);
+    padding-left: 20px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--or);
+    color: var(--noir);
+    padding: 15px 36px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  .btn-primary:hover { background: var(--or-clair); }
+
+  .btn-outline {
+    border: 1px solid rgba(245,240,232,0.3);
+    color: var(--beige);
+    padding: 15px 36px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.25s, color 0.25s;
+  }
+
+  .btn-outline:hover { border-color: var(--or); color: var(--or); }
+
+  .hero-badges {
+    margin-top: 64px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hero-badge {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--or);
+    line-height: 1;
+  }
+
+  .hero-badge-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--texte-clair);
+  }
+
+  /* ── SÉPARATEUR ───────────────────────────────────── */
+  .sep {
+    height: 1px;
+    background: var(--beige-moyen);
+    margin: 0 6vw;
+  }
+
+  /* ── SECTIONS ─────────────────────────────────────── */
+  section { padding: 100px 6vw; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--or);
+  }
+
+  .section-titre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .section-sous-titre {
+    font-size: 16px;
+    color: var(--texte-clair);
+    max-width: 560px;
+    line-height: 1.8;
+  }
+
+  /* ── À PROPOS ─────────────────────────────────────── */
+  #apropos { background: var(--beige-clair); }
+
+  .apropos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .apropos-visuel {
+    background: var(--noir);
+    border-radius: 2px;
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .apropos-visuel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(200,169,110,0.06) 20px, rgba(200,169,110,0.06) 21px);
+  }
+
+  .apropos-initial {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 300;
+    color: var(--or);
+    opacity: 0.4;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+  }
+
+  .apropos-badge-float {
+    position: absolute;
+    bottom: 32px;
+    right: -20px;
+    background: var(--or);
+    color: var(--noir);
+    padding: 16px 20px;
+    border-radius: 2px;
+    z-index: 2;
+  }
+
+  .apropos-badge-float .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    display: block;
+    line-height: 1;
+  }
+
+  .apropos-badge-float .lbl {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .apropos-texte p {
+    color: var(--texte-clair);
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .apropos-valeurs {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .valeur-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--blanc);
+    border-radius: 2px;
+    border: 1px solid var(--beige-moyen);
+  }
+
+  .valeur-icone {
+    width: 36px;
+    height: 36px;
+    background: var(--noir);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .valeur-icone svg { width: 16px; height: 16px; stroke: var(--or); fill: none; stroke-width: 1.5; }
+
+  .valeur-titre { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+  .valeur-desc { font-size: 13px; color: var(--texte-clair); }
+
+  /* ── SERVICES ─────────────────────────────────────── */
+  #services { background: var(--noir); }
+
+  #services .section-titre { color: var(--beige); }
+  #services .section-eyebrow { color: var(--or); }
+  #services .section-eyebrow::before { background: var(--or); }
+  #services .section-sous-titre { color: rgba(245,240,232,0.5); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(245,240,232,0.08);
+    margin-top: 60px;
+    border: 1px solid rgba(245,240,232,0.08);
+  }
+
+  .service-card {
+    background: var(--noir-doux);
+    padding: 40px 32px;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .service-card:hover { background: #222; }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(200,169,110,0.2);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(200,169,110,0.4);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .service-icon svg { width: 20px; height: 20px; stroke: var(--or); fill: none; stroke-width: 1.5; }
+
+  .service-titre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--beige);
+    margin-bottom: 12px;
+  }
+
+  .service-desc { font-size: 14px; color: rgba(245,240,232,0.5); line-height: 1.8; }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--or);
+    border-bottom: 1px solid var(--or);
+    padding-bottom: 2px;
+  }
+
+  /* ── TARIFS ───────────────────────────────────────── */
+  #tarifs { background: var(--beige-clair); }
+
+  .tarifs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .tarif-card {
+    background: var(--blanc);
+    border: 1px solid var(--beige-moyen);
+    border-radius: 2px;
+    padding: 40px 32px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .tarif-card:hover {
+    border-color: var(--or);
+    transform: translateY(-4px);
+  }
+
+  .tarif-card.vedette {
+    background: var(--noir);
+    border-color: var(--noir);
+  }
+
+  .tarif-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--or);
+    color: var(--noir);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .tarif-nom {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--texte-clair);
+    margin-bottom: 8px;
+  }
+
+  .tarif-card.vedette .tarif-nom { color: rgba(245,240,232,0.5); }
+
+  .tarif-prix {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--noir);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .tarif-card.vedette .tarif-prix { color: var(--beige); }
+
+  .tarif-prix sup { font-size: 22px; vertical-align: super; }
+
+  .tarif-desc {
+    font-size: 13px;
+    color: var(--texte-clair);
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--beige-moyen);
+  }
+
+  .tarif-card.vedette .tarif-desc { color: rgba(245,240,232,0.45); border-color: rgba(245,240,232,0.1); }
+
+  .tarif-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+
+  .tarif-features li {
+    font-size: 14px;
+    color: var(--texte-clair);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tarif-card.vedette .tarif-features li { color: rgba(245,240,232,0.6); }
+
+  .tarif-features li::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid var(--or);
+    flex-shrink: 0;
+    margin-top: 3px;
+    position: relative;
+  }
+
+  .tarif-features li::before {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath stroke='%23c8a96e' stroke-width='1.5' stroke-linecap='round' fill='none' d='M4 8l3 3 5-5'/%3E%3C/svg%3E") center/cover;
+    border: none;
+  }
+
+  .tarif-btn {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.25s;
+  }
+
+  .tarif-btn-outline {
+    border: 1px solid var(--beige-moyen);
+    color: var(--noir);
+  }
+
+  .tarif-btn-outline:hover { border-color: var(--or); color: var(--or); }
+
+  .tarif-btn-plein {
+    background: var(--or);
+    color: var(--noir);
+    font-weight: 500;
+  }
+
+  .tarif-btn-plein:hover { background: var(--or-clair); }
+
+  .tarif-note {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 13px;
+    color: var(--texte-clair);
+    font-style: italic;
+  }
+
+  /* ── CONTACT ──────────────────────────────────────── */
+  #contact { background: var(--noir); padding: 100px 6vw; }
+
+  #contact .section-titre { color: var(--beige); }
+  #contact .section-eyebrow { color: var(--or); }
+  #contact .section-eyebrow::before { background: var(--or); }
+  #contact .section-sous-titre { color: rgba(245,240,232,0.5); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .contact-infos { display: flex; flex-direction: column; gap: 20px; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(245,240,232,0.08);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.25s, background 0.25s;
+  }
+
+  .contact-item:hover {
+    border-color: rgba(200,169,110,0.4);
+    background: rgba(200,169,110,0.05);
+  }
+
+  .contact-item-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(200,169,110,0.3);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-item-icon svg { width: 18px; height: 18px; stroke: var(--or); fill: none; stroke-width: 1.5; }
+
+  .contact-item-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+    margin-bottom: 2px;
+  }
+
+  .contact-item-val {
+    font-size: 14px;
+    color: var(--beige);
+    font-weight: 400;
+  }
+
+  .contact-form {
+    background: rgba(245,240,232,0.03);
+    border: 1px solid rgba(245,240,232,0.08);
+    border-radius: 2px;
+    padding: 40px;
+  }
+
+  .form-row { margin-bottom: 20px; }
+
+  .form-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 8px;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    background: rgba(245,240,232,0.05);
+    border: 1px solid rgba(245,240,232,0.12);
+    border-radius: 2px;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--beige);
+    outline: none;
+    transition: border-color 0.25s;
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: rgba(245,240,232,0.25); }
+
+  .form-input:focus,
+  .form-textarea:focus { border-color: var(--or); }
+
+  .form-textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--or);
+    color: var(--noir);
+    border: none;
+    padding: 15px;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+
+  .form-submit:hover { background: var(--or-clair); }
+
+  /* ── FOOTER ───────────────────────────────────────── */
+  footer {
+    background: var(--noir-doux);
+    border-top: 1px solid rgba(245,240,232,0.08);
+    padding: 40px 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--beige);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--or); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(245,240,232,0.3);
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: rgba(245,240,232,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--or); }
+
+  /* ── ANIMATIONS ───────────────────────────────────── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ───────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--beige-clair);
+      padding: 24px 6vw;
+      border-bottom: 1px solid var(--beige-moyen);
+      gap: 20px;
+    }
+    .nav-links.open a {
+      font-size: 15px;
+      letter-spacing: 0.04em;
+    }
+    .nav-cta { display: none !important; }
+    .apropos-grid { grid-template-columns: 1fr; gap: 40px; }
+    .apropos-visuel { aspect-ratio: 3/2; }
+    .apropos-badge-float { right: 16px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .tarifs-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ────────────────────────────────────── -->
+<nav>
+  <a href="#accueil" class="nav-logo">Create<span>.</span>Site</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#contact" class="nav-cta">Démarrer un projet</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────── -->
+<section id="accueil">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Création de sites web locaux</div>
+    <h1 class="hero-titre">
+      Votre commerce<br><em>mérite mieux.</em>
+    </h1>
+    <p class="hero-slogan">
+      Parce que votre commerce mérite mieux qu'une page Facebook.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Réserver un appel gratuit</a>
+      <a href="#services" class="btn-outline">Voir mes offres</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <span class="hero-badge-num">100%</span>
+        <span class="hero-badge-label">Sur mesure</span>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-num">72h</span>
+        <span class="hero-badge-label">Livraison express</span>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-num">Local</span>
+        <span class="hero-badge-label">Je viens vous voir</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── À PROPOS ───────────────────────────────────────── -->
+<section id="apropos">
+  <div class="section-eyebrow">Qui suis-je</div>
+  <h2 class="section-titre">Un regard neuf,<br>une expertise réelle.</h2>
+
+  <div class="apropos-grid">
+    <div>
+      <div class="apropos-visuel">
+        <span class="apropos-initial">CS</span>
+        <div class="apropos-badge-float">
+          <span class="num">+10</span>
+          <span class="lbl">Sites livrés</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="apropos-texte fade-up">
+      <p>
+        Je suis et je crée des sites web professionnels pour les commerces de proximité — boulangeries, coiffeurs, artisans, restaurants, PME locales — qui méritent une vraie présence en ligne.
+      </p>
+      <p>
+        Étudiant passionné de web, je combine des tarifs accessibles avec un engagement de qualité. Ma jeunesse est ma force : je suis constamment formé aux dernières tendances du web.
+      </p>
+      <p>
+        Je me déplace chez vous, je m'adapte à vos besoins, et je livre des sites qui <strong>convertissent vraiment</strong>.
+      </p>
+
+      <div class="apropos-valeurs">
+        <div class="valeur-item">
+          <div class="valeur-icone">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="valeur-titre">Sites sur mesure</div>
+            <div class="valeur-desc">Pas de templates génériques — chaque site est unique, comme votre commerce.</div>
+          </div>
+        </div>
+        <div class="valeur-item">
+          <div class="valeur-icone">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="valeur-titre">Livraison rapide</div>
+            <div class="valeur-desc">Votre site en ligne en 72h à 7 jours selon la formule choisie.</div>
+          </div>
+        </div>
+        <div class="valeur-item">
+          <div class="valeur-icone">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="valeur-titre">Accompagnement local</div>
+            <div class="valeur-desc">Un interlocuteur unique, disponible, qui connaît votre secteur.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ── SERVICES ───────────────────────────────────────── -->
+<section id="services">
+  <div class="section-eyebrow">Ce que je fais</div>
+  <h2 class="section-titre" style="color:var(--beige)">Des services pensés pour<br>les commerces locaux.</h2>
+  <p class="section-sous-titre">Du site vitrine simple au site complet avec réservation en ligne, je m'adapte à votre activité et votre budget.</p>
+
+  <div class="services-grid fade-up">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+      </div>
+      <div class="service-titre">Site vitrine</div>
+      <p class="service-desc">Présentez votre commerce, vos horaires, votre histoire. Simple, efficace, professionnel. Idéal pour démarrer.</p>
+      <span class="service-tag">Boulangerie, coiffeur, artisan</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <div class="service-titre">Site sur mesure</div>
+      <p class="service-desc">Design personnalisé, formulaire de contact, galerie photos, intégration Google Maps. Une vraie image de marque.</p>
+      <span class="service-tag">Restaurant, boutique, PME</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <div class="service-titre">Refonte & SEO</div>
+      <p class="service-desc">Votre site existe mais personne ne le voit ? Je le modernise et l'optimise pour Google afin d'attirer vos clients locaux.</p>
+      <span class="service-tag">Visibilité locale, Google</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.4a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div class="service-titre">Maintenance</div>
+      <p class="service-desc">Mises à jour, modifications de textes, ajout de photos — je reste disponible après la livraison pour faire évoluer votre site.</p>
+      <span class="service-tag">Suivi mensuel</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <div class="service-titre">Version mobile</div>
+      <p class="service-desc">Tous mes sites sont optimisés pour smartphone. Vos clients consultent depuis leur téléphone — votre site aussi doit être parfait sur mobile.</p>
+      <span class="service-tag">Responsive, rapide</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="service-titre">Formulaire & réservation</div>
+      <p class="service-desc">Formulaire de contact, prise de rendez-vous en ligne, intégration Calendly. Vos clients vous contactent directement depuis le site.</p>
+      <span class="service-tag">Salon, cabinet, artisan</span>
+    </div>
+  </div>
+</section>
+
+<div class="sep" style="background: rgba(245,240,232,0.08); margin: 0;"></div>
+
+<!-- ── TARIFS ──────────────────────────────────────────── -->
+<section id="tarifs">
+  <div class="section-eyebrow">Investissement</div>
+  <h2 class="section-titre">Des tarifs accessibles,<br>une qualité professionnelle.</h2>
+  <p class="section-sous-titre">Pas de frais cachés. Un devis clair, un engagement tenu. Et parce que je suis encore étudiant, mes prix sont volontairement accessibles.</p>
+
+  <div class="tarifs-grid fade-up">
+    <div class="tarif-card">
+      <div class="tarif-nom">Starter</div>
+      <div class="tarif-prix"><sup>À partir de </sup>149<sup>€</sup></div>
+      <p class="tarif-desc">Pour démarrer sur le web avec un site professionnel et efficace.</p>
+      <ul class="tarif-features">
+        <li>Site 1 page (one-page)</li>
+        <li>Design personnalisé</li>
+        <li>Optimisé mobile</li>
+        <li>Formulaire de contact</li>
+        <li>Mise en ligne incluse</li>
+        <li>Livraison en 72h</li>
+      </ul>
+      <a href="#contact" class="tarif-btn tarif-btn-outline">Choisir Starter</a>
+    </div>
+
+    <div class="tarif-card vedette">
+      <div class="tarif-badge">Le plus demandé</div>
+      <div class="tarif-nom">Pro</div>
+      <div class="tarif-prix"><sup>À partir de </sup>299<sup>€</sup></div>
+      <p class="tarif-desc">Le site complet pour une présence en ligne solide et mémorable.</p>
+      <ul class="tarif-features" style="color: rgba(245,240,232,0.65);">
+        <li>Jusqu'à 5 pages</li>
+        <li>Design sur mesure</li>
+        <li>SEO local optimisé</li>
+        <li>Google Maps intégré</li>
+        <li>Galerie photos</li>
+        <li>Réseaux sociaux liés</li>
+        <li>Livraison en 5 jours</li>
+      </ul>
+      <a href="#contact" class="tarif-btn tarif-btn-plein">Choisir Pro</a>
+    </div>
+
+    <div class="tarif-card">
+      <div class="tarif-nom">Premium</div>
+      <div class="tarif-prix"><sup>Sur </sup>devis</div>
+      <p class="tarif-desc">Un projet complexe ou une refonte complète ? Parlons-en.</p>
+      <ul class="tarif-features">
+        <li>Pages illimitées</li>
+        <li>Identité visuelle complète</li>
+        <li>Réservation en ligne</li>
+        <li>Blog / Actualités</li>
+        <li>Formation incluse</li>
+        <li>Suivi 3 mois offert</li>
+      </ul>
+      <a href="#contact" class="tarif-btn tarif-btn-outline">Demander un devis</a>
+    </div>
+  </div>
+  <p class="tarif-note">Hébergement et nom de domaine non inclus (~10–15€/mois selon l'hébergeur). Je vous guide dans le choix.</p>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────── -->
+<section id="contact">
+  <div class="section-eyebrow">Contact</div>
+  <h2 class="section-titre" style="color:var(--beige)">Parlons de votre<br>projet ensemble.</h2>
+  <p class="section-sous-titre">Un appel gratuit de 20 minutes pour cerner vos besoins et vous proposer la meilleure solution. Sans engagement.</p>
+
+  <div class="contact-grid fade-up">
+    <div class="contact-infos">
+      
+      <a href="creat.site2000@gmail.com" class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-val">creat.site2000@gmail.comr</div>
+        </div>
+      </a>
+
+      <a href="https://facebook.com/createsite" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Facebook</div>
+          <div class="contact-item-val">Create Site</div>
+        </div>
+      </a>
+
+      
+    <div class="contact-form">
+      <div class="form-row">
+        <label class="form-label">Votre nom</label>
+        <input type="text" class="form-input" placeholder="Marie Dupont">
+      </div>
+      <div class="form-row">
+        <label class="form-label">Votre email</label>
+        <input type="email" class="form-input" placeholder="marie@moncommerce.fr">
+      </div>
+      <div class="form-row">
+        <label class="form-label">Votre activité</label>
+        <input type="text" class="form-input" placeholder="Boulangerie, coiffeur, restaurant...">
+      </div>
+      <div class="form-row">
+        <label class="form-label">Votre message</label>
+        <textarea class="form-textarea" placeholder="Décrivez votre projet en quelques mots..."></textarea>
+      </div>
+      <button type="button" class="form-submit">Envoyer ma demande</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <a href="#accueil" class="footer-logo">Create<span>.</span>Site</a>
+  <p class="footer-copy">© 2025 Create Site — Tous droits réservés</p>
+  <ul class="footer-links">
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
