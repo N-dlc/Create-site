@@ -17,9 +17,9 @@
   --txt:      #e8e6e1;
   --txt2:     rgba(232,230,225,0.45);
   --txt3:     rgba(232,230,225,0.22);
-  --accent:   #7fff6e;
-  --accent2:  rgba(127,255,110,0.12);
-  --accent3:  rgba(127,255,110,0.06);
+  --accent:   #8b5cf6;
+--accent2:  rgba(139,92,246,0.12);
+--accent3:  rgba(139,92,246,0.06);
   --white:    #ffffff;
   --mono:     'JetBrains Mono', monospace;
 }
@@ -93,14 +93,14 @@ nav{
 .hero-glow{
   position:absolute;top:-200px;right:-100px;
   width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle, rgba(127,255,110,0.06) 0%, transparent 70%);
+  background:radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
   pointer-events:none;
 }
 .hero-content{max-width:760px;position:relative;z-index:1;}
 .hero-tag{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--mono);font-size:11px;color:var(--accent);
-  border:1px solid rgba(127,255,110,0.25);
+  border:1px solid rgba(139,92,246,0.25);
   padding:5px 12px;border-radius:20px;margin-bottom:36px;
   background:var(--accent3);
 }
@@ -469,8 +469,8 @@ footer{
     <div id="modalContent">
       <div class="modal-header">
         <div>
-          <div class="modal-title">Réserver un appel</div>
-          <div class="modal-sub">Remplis ce formulaire, je te réponds sous 24h.</div>
+          <div class="modal-title">Réserver un rendez-vous téléphonique</div>
+          <div class="modal-sub">Remplissez ce formulaire, je vous réponds sous 24h.</div>
         </div>
         <button class="modal-close" onclick="closeModal()">&#x2715;</button>
       </div>
@@ -532,16 +532,10 @@ footer{
       <span class="hero-tag-dot"></span>
       Création de sites web locaux
     </div>
-    <h1 class="hero-titre">
-      Votre commerce<br>mérite <span class="hl">mieux.</span>
     </h1>
     <p class="hero-slogan">
       Parce que votre commerce mérite mieux qu'une page Facebook.
     </p>
-    <div class="hero-actions">
-      <button class="btn-green" onclick="openModal(event)">Réserver un appel</button>
-      <a href="#services" class="btn-ghost">Voir mes offres</a>
-    </div>
     <div class="hero-stats">
       <div class="stat">
         <span class="stat-n">100%</span>
@@ -571,7 +565,7 @@ footer{
       </div>
     </div>
     <div class="ap-txt fu">
-      <p>Je suis <strong>Nino</strong>, créateur de sites web pour les commerces de proximité — boulangeries, coiffeurs, artisans, restaurants — qui méritent une vraie présence en ligne.</p>
+      <p>Je suis <strong>étudiant</strong>, créateur de sites web pour les commerces de proximité — boulangeries, coiffeurs, artisans, restaurants — qui méritent une vraie présence en ligne.</p>
       <p>Étudiant passionné de développement web, j'allie la <strong>fraîcheur des nouvelles technologies</strong> à un vrai sens du service. Mes tarifs sont accessibles, mon travail est sérieux.</p>
       <p>Je me déplace chez vous, j'écoute vos besoins, et je livre des sites modernes qui fonctionnent — sur mobile comme sur ordinateur.</p>
       <div class="ap-list">
@@ -596,41 +590,41 @@ footer{
 <section id="services">
   <div class="eyebrow">Ce que je fais</div>
   <h2 class="stitle">Services pensés pour<br>les commerces locaux.</h2>
-  <p class="ssub">Du site vitrine simple au site complet, je m'adapte à ton activité et ton budget.</p>
+  <p class="ssub">Du site vitrine au site complet, chaque projet est adapté à votre activité et à vos besoins.</p>
   <div class="sv-grid fu">
     <div class="sv-card">
       <div class="sv-num">// 01</div>
       <div class="sv-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
       <div class="sv-title">Site vitrine</div>
-      <p class="sv-desc">Présente ton commerce, tes horaires, ton histoire. Simple, efficace, professionnel.</p>
+      <p class="sv-desc">Présentez votre activité, vos horaires, votre savoir-faire et vos photos. Un site clair et professionnel.</p>
       <span class="sv-tag">Boulangerie · Coiffeur · Artisan</span>
     </div>
     <div class="sv-card">
       <div class="sv-num">// 02</div>
       <div class="sv-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
       <div class="sv-title">Site sur mesure</div>
-      <p class="sv-desc">Design personnalisé, galerie photos, Google Maps, formulaire de contact. Une vraie image de marque.</p>
+      <p class="sv-desc">Un site entièrement personnalisé avec photos, carte Google, formulaire de contact et mise en valeur de votre activité.</p>
       <span class="sv-tag">Restaurant · Boutique · PME</span>
     </div>
     <div class="sv-card">
       <div class="sv-num">// 03</div>
       <div class="sv-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
       <div class="sv-title">Optimisation mobile</div>
-      <p class="sv-desc">Tous mes sites sont parfaits sur smartphone. Tes clients consultent depuis leur téléphone.</p>
+      <p class="sv-desc">Tous les sites sont optimisés pour mobile. Vos clients consultent principalement depuis leur téléphone.</p>
       <span class="sv-tag">Responsive · Rapide</span>
     </div>
     <div class="sv-card">
       <div class="sv-num">// 04</div>
       <div class="sv-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.4a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
       <div class="sv-title">Maintenance</div>
-      <p class="sv-desc">Mises à jour, ajout de photos, modifications. Je reste disponible après la livraison.</p>
+      <p class="sv-desc">Mises à jour, ajout de photos et modifications. Un accompagnement après la mise en ligne..</p>
       <span class="sv-tag">Suivi mensuel</span>
     </div>
     <div class="sv-card">
       <div class="sv-num">// 05</div>
       <div class="sv-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
       <div class="sv-title">Formulaire & contact</div>
-      <p class="sv-desc">Formulaire de contact, réseaux sociaux liés. Tes clients te contactent directement depuis le site.</p>
+      <p class="sv-desc">Vos clients vous contactent directement depuis votre site.</p>
       <span class="sv-tag">Salon · Cabinet · Artisan</span>
     </div>
   </div>
@@ -646,13 +640,14 @@ footer{
       <div class="tr-name">Starter</div>
       <div class="tr-price"><sup>dès </sup>149<sup>€</sup></div>
       <p class="tr-desc">Pour démarrer sur le web rapidement et efficacement.</p>
-      <ul class="tr-feats">
-        <li>Site 1 page (one-page)</li>
-        <li>Design personnalisé</li>
-        <li>Optimisé mobile</li>
-        <li>Formulaire de contact</li>
-        <li>Mise en ligne incluse</li>
-        <li>Livraison en 72h</li>
+     <ul class="tr-feats">
+  <li>Design personnalisé</li>
+  <li>Site professionnel adapté à votre activité</li>
+  <li>Photos et présentation de votre activité</li>
+  <li>Formulaire de contact</li>
+  <li>Optimisé mobile</li>
+  <li>Mise en ligne incluse</li>
+</ul>
       </ul>
       <button class="tr-btn tr-btn-ghost" onclick="openModal(event)">Choisir Starter</button>
     </div>
@@ -660,21 +655,21 @@ footer{
       <div class="tr-name">Pro</div>
       <div class="tr-price"><sup>dès </sup>299<sup>€</sup></div>
       <p class="tr-desc">Le site complet pour une présence solide et mémorable.</p>
-      <ul class="tr-feats">
-        <li>Jusqu'à 5 pages</li>
-        <li>Design sur mesure</li>
-        <li>SEO local optimisé</li>
-        <li>Google Maps intégré</li>
-        <li>Galerie photos</li>
-        <li>Réseaux sociaux liés</li>
-        <li>Livraison en 5 jours</li>
+     <ul class="tr-feats">
+  <li>Site complet et personnalisé</li>
+  <li>Photos et mise en valeur de votre activité</li>
+  <li>Google Maps intégré</li>
+  <li>Formulaire avancé</li>
+  <li>Possibilité de réservation</li>
+  <li>Optimisation SEO locale</li>
+</ul>
       </ul>
       <button class="tr-btn tr-btn-fill" onclick="openModal(event)">Choisir Pro</button>
     </div>
     <div class="tr-card">
       <div class="tr-name">Premium</div>
       <div class="tr-price"><sup>sur </sup>devis</div>
-      <p class="tr-desc">Un projet complexe ou une refonte complète ? Parlons-en.</p>
+      <p class="tr-desc">Un projet complexe ? Parlons-en..</p>
       <ul class="tr-feats">
         <li>Pages illimitées</li>
         <li>Identité visuelle complète</li>
@@ -685,7 +680,7 @@ footer{
       <button class="tr-btn tr-btn-ghost" onclick="openModal(event)">Demander un devis</button>
     </div>
   </div>
-  <p class="tr-note">// Hébergement et nom de domaine non inclus (~10–15€/mois). Je vous guide dans le choix.</p>
+  <p class="tr-note">//  Hébergement, maintenance et nom de domaine : 20 à 30€/mois selon le projet.</p>.</p>
 </section>
 
 <!-- CONTACT -->
